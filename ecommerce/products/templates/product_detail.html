@@ -1,0 +1,41 @@
+{%extends "base.html" %}
+{%load static%}
+{%block title%}{{product.name}}{%endblock%} 
+
+{%block content%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="card shadow-lg border-0">
+            {%if product.image%}
+                <img src="{{product.image.url}}" class="card-img-top img-fluid" alt="{{product.name}}">
+            {%else%}
+                <img src="{% static 'img/,o-image.png'%}" class="card-img-top img-fluid" alt="Image non disponible">
+            {%endif%}
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h1 class="text-primary">{{product.name}}</h1>
+        <p class="text-muted">Catégorie: <strong>{{product.category.name}}</strong></p>
+        <h3 class="text-success">{{product.price}} DH</h3>
+
+        <div class="mb-3">
+            <span class="text-warning">
+                &#9733;
+            </span>
+            <small class="text-muted">(23 avis)</small>
+        </div>
+
+        <p>{{product.description}}</p>
+        <p class="text-muted">Stock disponible : <strong>{{product.stock}}</strong></p>
+
+        <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-success btn-lg">Ajouter au panier</button>
+            <a href="{% url 'product_list' %}" class="btn btn-secondary"> Retour aux Produits</a>
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}
+ 
+ 

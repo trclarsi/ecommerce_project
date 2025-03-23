@@ -1,0 +1,48 @@
+{%extends "base.html" %}
+{%load static%}
+{%block title%}
+Nos produits
+{%endblock%}
+
+{%block content%} 
+<div class="container mt-4">
+    <h1 class="mb-4 text-center text-primary">Les produits {{category.name}} </h1>
+
+    <div class="row">
+        {% for product in products%}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-0">
+                {% if product.image %}
+                    <img src="{{product.image.url}}" width="150" alt="{{product.name}}">
+                {% else %}
+                    <img src="{% static 'img/no-image.png' %}" class="card-img-top img-fluid" alt="Image non disponible">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title text-dark">{{product.name}} </h5>
+                    <p class="card-text text-muted">{{product.category.name}}</p>
+                    <p class="card-text font-weight-bold text-success">{{product.price}} DH</p>
+
+                <div class="mb-2">
+                    <span class="text-warning">
+                        &#9733;
+                    </span>
+                    <small class="text-muted">(23 avis)</small>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <a href = "{% url 'product_detail' product.pk %}" class="btn btn-primary">voir détail</a>
+                    <button class="btn btn-success"> Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%empty%}
+    <p class="text-center">Aucun produit disponible.</p>
+    {%endfor%}
+</div>
+
+</div>
+{%endblock%}
+
+       

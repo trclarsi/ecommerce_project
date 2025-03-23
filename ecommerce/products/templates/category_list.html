@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>table,td,th{
+        border : solid black 1px;
+        border-collapse: collapse;
+    }</style>
+</head>
+<body>
+    <h1>Categorie</h1>
+    <ul> 
+    {%for category in categories%}
+        <li> <a href ="{%url 'category_detail' category.id%}">{{category.name}}</a></li>
+    {%endfor%}
+    </ul>
+    <a href = "{%url 'product_list'%}">Voir les produits</a>
+   
+   
+</body>
+</html>
